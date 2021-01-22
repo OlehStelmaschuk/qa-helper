@@ -1,0 +1,29 @@
+@layer components {
+  .main-container{
+    @apply bg-gradient-to-r from-gray-400 to-gray-900 h-screen w-screen flex flex-col justify-center items-center
+  }
+  .login-form-main{
+    @apply p-10 bg-gray-100 rounded-lg
+  }
+
+  .login-group{
+    @apply my-10
+  }
+
+  .login-header{
+    @apply m-auto text-center text-2xl font-thin
+  }
+
+  .login-form-group{
+    @apply my-3 flex
+  }
+
+  .login-form-input{
+    @apply ml-auto rounded px-2 border-gray-300 border-2
+  }
+
+  .login-form-button{
+    @apply mx-auto text-center bg-gray-900 hover:bg-gray-500 text-white rounded-lg py-3 mt-5 cursor-pointer
+  }
+
+}

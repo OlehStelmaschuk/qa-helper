@@ -1,0 +1,20 @@
+@layer components {
+  .parent{
+    @apply max-w-screen-xl w-full max-h-screen h-5/6 grid grid-rows-2
+  }
+
+  .search-block{
+    @apply rounded-tr-lg bg-green-100 flex justify-center items-center
+  }
+  .main-block{
+    @apply rounded-br-lg bg-indigo-100
+  }
+  .side-block{
+    @apply flex-col justify-center items-center rounded-l-lg bg-yellow-100 row-span-2 pt-3
+  }
+}
+
+.parent{
+  grid-template-rows: 80px 1fr;
+  grid-template-columns: 100px 1fr;
+}
