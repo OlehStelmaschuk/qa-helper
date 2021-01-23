@@ -8,10 +8,10 @@ export const setHelloTimeAction = (data) => async (dispatch) => {
   })
 }
 
-export const addHelloAction = () => async (dispatch, getState) => {
+export const changeHelloAction = (setToFalse) => async (dispatch, getState) => {
   dispatch({
     type: TYPE.SET_HELLO_MESSAGE,
-    payload: !getState().dashboard.addHello,
+    payload: setToFalse ? false : !getState().dashboard.addHello,
   })
 }
 

@@ -3,17 +3,18 @@
     {
       "id": 1,
       "title": "Get Some Vodka",
-      "message": "Some true host vps exp"
+      "ru": "Some ru text",
+      "en": "Some en text"
     },
     {
       "id": 2,
       "title": "Buy helicopter",
-      "message": "Some true host domain exp"
+      "ru": "Some true host domain exp"
     },
     {
       "id": 3,
       "title": "Suffer company",
-      "message": "Some true cash exp"
+      "ru": "Some true cash exp"
     }
   ]
 }

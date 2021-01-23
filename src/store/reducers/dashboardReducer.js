@@ -2,7 +2,7 @@ import * as TYPE from '../constants/dashboardConstants'
 
 export const dashboardReducer = (
   state = {
-    time: 'none',
+    time: 'day',
     addHello: false,
     searchString: '',
     answerList: {},
@@ -29,7 +29,12 @@ export const dashboardReducer = (
         searchString: payload,
         filteredAnswerList: state.answerList.filter((item) => {
           const regex = new RegExp(`${payload}`, 'gi')
-          return item.title.match(regex) || item.message.match(regex)
+          return (
+            item.title.match(regex) ||
+            (item.ru && item.ru.match(regex)) ||
+            (item.ua && item.ua.match(regex)) ||
+            (item.en && item.en.match(regex))
+          )
         }),
       }
     }

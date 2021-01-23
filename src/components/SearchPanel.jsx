@@ -5,14 +5,13 @@ import {
   Sunset,
   Moon,
   RefreshCw,
-  Slash,
   MessageSquare,
   Plus,
 } from 'react-feather'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   setHelloTimeAction,
-  addHelloAction,
+  changeHelloAction,
   setSearchString,
   resetSearchString,
 } from '../store/actions/dashboardAction'
@@ -25,8 +24,8 @@ const SearchPanel = () => {
     dispatch(setHelloTimeAction(data))
   }
 
-  const setHelloAction = () => {
-    dispatch(addHelloAction())
+  const changeHello = () => {
+    dispatch(changeHelloAction())
   }
 
   const setSearchStringAction = (searchString) => {
@@ -46,19 +45,14 @@ const SearchPanel = () => {
           setSearchStringAction(e.target.value)
         }}
         onKeyDown={(e) => keyPressHandler(e)}
+        disabled={!dashboard.answerListSuccess}
       />
 
       <div className='search-button-block'>
         <a
           href='#'
-          className='p-2 bg-black text-white hover:bg-gray-200 hover:text-black current rounded-l'
-          onClick={() => setHelloTime('none')}
-        >
-          <Slash />
-        </a>
-        <a
-          href='#'
-          className='p-2 bg-black text-white hover:bg-gray-200 hover:text-black'
+          className='p-2 bg-black text-white hover:bg-gray-200 hover:text-black rounded-l'
+          title='Automatic'
           onClick={() => setHelloTime('auto')}
         >
           <RefreshCw />
@@ -66,6 +60,7 @@ const SearchPanel = () => {
         <a
           href='#'
           className='p-2 bg-black text-white hover:bg-gray-200 hover:text-black'
+          title='Morning'
           onClick={() => setHelloTime('sunrise')}
         >
           <Sunrise />
@@ -73,6 +68,7 @@ const SearchPanel = () => {
         <a
           href='#'
           className='p-2 bg-black text-white hover:bg-gray-200 hover:text-black'
+          title='Day'
           onClick={() => setHelloTime('day')}
         >
           <Sun />
@@ -80,6 +76,7 @@ const SearchPanel = () => {
         <a
           href='#'
           className='p-2 bg-black text-white hover:bg-gray-200 hover:text-black'
+          title='Evening'
           onClick={() => setHelloTime('sunset')}
         >
           <Sunset />
@@ -87,6 +84,7 @@ const SearchPanel = () => {
         <a
           href='#'
           className='p-2 bg-black text-white hover:bg-gray-200 hover:text-black rounded-r'
+          title='Night'
           onClick={() => setHelloTime('night')}
         >
           <Moon />
@@ -95,9 +93,13 @@ const SearchPanel = () => {
 
       <a
         href='#'
-        className='p-2 bg-black text-white hover:bg-yellow-400 hover:text-black rounded mx-3'
+        className={
+          !dashboard.addHello
+            ? ' bg-black text-white p-2 rounded mx-3'
+            : 'bg-yellow-400 text-black p-2 rounded mx-3'
+        }
         title='Add hello message'
-        onClick={setHelloAction}
+        onClick={changeHello}
       >
         <MessageSquare /> <Plus />
       </a>
