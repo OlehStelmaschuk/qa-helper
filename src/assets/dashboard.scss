@@ -7,10 +7,13 @@
     @apply rounded-tr-lg bg-green-100 flex justify-center items-center
   }
   .main-block{
-    @apply rounded-br-lg bg-indigo-100
+    @apply rounded-br-lg bg-indigo-100 p-3
   }
   .side-block{
     @apply flex-col justify-center items-center rounded-l-lg bg-yellow-100 row-span-2 pt-3
+  }
+  .search-button-block{
+    @apply flex
   }
 }
 

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const _baseURL = 'http://127.1.1.1/api'
+const _baseURL = 'http://localhost:3000'
 
 const config = {
   headers: {
@@ -10,4 +10,9 @@ const config = {
 
 export const loginRequest = async (user, password) => {
   return await axios.post(`${_baseURL}/users/login`, { user, password }, config)
+}
+
+export const getAnswerListService = async () => {
+  const { data } = await axios.get(`${_baseURL}/posts`)
+  return data
 }
