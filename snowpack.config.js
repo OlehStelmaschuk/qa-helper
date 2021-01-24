@@ -1,11 +1,14 @@
 /** @type {import("snowpack").SnowpackUserConfig } */
 module.exports = {
   mount: {
+    public: '/',
+    src: '/_dist_',
     /* ... */
   },
   plugins: [
     '@snowpack/plugin-sass',
     '@snowpack/plugin-postcss',
+    // '@snowpack/plugin-webpack',
     /* ... */
   ],
   routes: [
@@ -14,7 +17,8 @@ module.exports = {
   ],
   optimize: {
     /* Example: Bundle your final build: */
-    // "bundle": true,
+    bundle: true,
+    minify: true,
   },
   packageOptions: {
     /* ... */

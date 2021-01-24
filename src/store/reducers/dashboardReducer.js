@@ -2,7 +2,7 @@ import * as TYPE from '../constants/dashboardConstants'
 
 export const dashboardReducer = (
   state = {
-    time: 'day',
+    time: 'auto',
     addHello: false,
     searchString: '',
     answerList: {},
@@ -29,12 +29,14 @@ export const dashboardReducer = (
         searchString: payload,
         filteredAnswerList: state.answerList.filter((item) => {
           const regex = new RegExp(`${payload}`, 'gi')
-          return (
-            item.title.match(regex) ||
-            (item.ru && item.ru.match(regex)) ||
-            (item.ua && item.ua.match(regex)) ||
-            (item.en && item.en.match(regex))
-          )
+          if (state.searchString !== '')
+            return (
+              item.title.match(regex) ||
+              (item.ru && item.ru.match(regex)) ||
+              (item.ua && item.ua.match(regex)) ||
+              (item.en && item.en.match(regex))
+            )
+          else return item
         }),
       }
     }
@@ -42,6 +44,7 @@ export const dashboardReducer = (
       return {
         ...state,
         searchString: '',
+        filteredAnswerList: state.answerList,
       }
     }
     case TYPE.ANSWER_LIST_REQUEST: {
@@ -55,6 +58,7 @@ export const dashboardReducer = (
       return {
         ...state,
         answerList: payload,
+        filteredAnswerList: payload,
         answerListSuccess: true,
       }
     }

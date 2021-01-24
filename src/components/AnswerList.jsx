@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { Loader, LangUa, LangEn, LangRu } from './'
 import { useDispatch, useSelector } from 'react-redux'
+import { helloManager } from '../utilites/helloManager'
 import {
   changeHelloAction,
   getAnswerList,
@@ -10,12 +11,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard/lib/Component'
 const AnswerList = () => {
   const dispatch = useDispatch()
   const dashboard = useSelector((state) => state.dashboard)
-  const {
-    answerList,
-    answerListSuccess,
-    searchString,
-    filteredAnswerList,
-  } = dashboard
+  const { answerListSuccess, filteredAnswerList, addHello, time } = dashboard
 
   useEffect(() => {
     dispatch(getAnswerList())
@@ -25,21 +21,27 @@ const AnswerList = () => {
     dispatch(changeHelloAction(true))
   }
 
-  const AnswerPost = ({ title, id, ru, en, ua }) => {
+  const AnswerPost = ({ item: { title, en, ru, ua } }) => {
     return (
-      <div
-        className='answer-item flex border-dashed border-b border-w'
-        key={id}
-      >
+      <div className='answer-item flex border-dashed border-b border-w'>
         <div className='w-full'>{title}</div>
         <div className='justify-self-end flex'>
-          <CopyToClipboard text={en} onCopy={() => disableHello()}>
+          <CopyToClipboard
+            text={addHello ? helloManager('en', time) + en : en}
+            onCopy={() => disableHello()}
+          >
             <div className='px-1 cursor-pointer'>{en && <LangEn />}</div>
           </CopyToClipboard>
-          <CopyToClipboard text={ua} onCopy={() => disableHello()}>
+          <CopyToClipboard
+            text={addHello ? helloManager('ua', time) + ua : ua}
+            onCopy={() => disableHello()}
+          >
             <div className='px-1 cursor-pointer'>{ua && <LangUa />}</div>
           </CopyToClipboard>
-          <CopyToClipboard text={ru} onCopy={() => disableHello()}>
+          <CopyToClipboard
+            text={addHello ? helloManager('ru', time) + ru : ru}
+            onCopy={() => disableHello()}
+          >
             <div className='px-1 cursor-pointer'>{ru && <LangRu />}</div>
           </CopyToClipboard>
         </div>
@@ -50,16 +52,9 @@ const AnswerList = () => {
   const Main = () => {
     return (
       <div className='flex flex-col h-full w-full max-h-full bg-white rounded-2xl space-y-2 p-3 overflow-auto'>
-        {answerListSuccess &&
-          searchString === '' &&
-          answerList.map(({ id, title, ru, en, ua }) => (
-            <AnswerPost title={title} key={id} ru={ru} en={en} ua={ua} />
-          ))}
-        {answerListSuccess &&
-          searchString !== '' &&
-          filteredAnswerList.map(({ id, title, ru, en, ua }) => (
-            <AnswerPost title={title} key={id} ru={ru} en={en} ua={ua} />
-          ))}
+        {filteredAnswerList.map((item, index) => (
+          <AnswerPost item={item} key={index} />
+        ))}
       </div>
     )
   }

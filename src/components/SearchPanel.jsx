@@ -51,7 +51,11 @@ const SearchPanel = () => {
       <div className='search-button-block'>
         <a
           href='#'
-          className='p-2 bg-black text-white hover:bg-gray-200 hover:text-black rounded-l'
+          className={
+            dashboard.time === 'auto'
+              ? 'bg-gray-200 text-black p-2  rounded-l'
+              : 'bg-black text-white p-2  rounded-l'
+          }
           title='Automatic'
           onClick={() => setHelloTime('auto')}
         >
@@ -59,7 +63,11 @@ const SearchPanel = () => {
         </a>
         <a
           href='#'
-          className='p-2 bg-black text-white hover:bg-gray-200 hover:text-black'
+          className={
+            dashboard.time === 'sunrise'
+              ? 'bg-gray-200 text-black p-2'
+              : 'bg-black text-white p-2'
+          }
           title='Morning'
           onClick={() => setHelloTime('sunrise')}
         >
@@ -67,7 +75,11 @@ const SearchPanel = () => {
         </a>
         <a
           href='#'
-          className='p-2 bg-black text-white hover:bg-gray-200 hover:text-black'
+          className={
+            dashboard.time === 'day'
+              ? 'bg-gray-200 text-black p-2'
+              : 'bg-black text-white p-2'
+          }
           title='Day'
           onClick={() => setHelloTime('day')}
         >
@@ -75,7 +87,11 @@ const SearchPanel = () => {
         </a>
         <a
           href='#'
-          className='p-2 bg-black text-white hover:bg-gray-200 hover:text-black'
+          className={
+            dashboard.time === 'sunset'
+              ? 'bg-gray-200 text-black p-2'
+              : 'bg-black text-white p-2'
+          }
           title='Evening'
           onClick={() => setHelloTime('sunset')}
         >
@@ -83,7 +99,11 @@ const SearchPanel = () => {
         </a>
         <a
           href='#'
-          className='p-2 bg-black text-white hover:bg-gray-200 hover:text-black rounded-r'
+          className={
+            dashboard.time === 'night'
+              ? 'bg-gray-200 text-black p-2 rounded-r'
+              : 'bg-black text-white p-2 rounded-r'
+          }
           title='Night'
           onClick={() => setHelloTime('night')}
         >

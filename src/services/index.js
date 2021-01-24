@@ -1,4 +1,5 @@
 import axios from 'axios'
+import jsonFile from './fakedb/db.json'
 
 const _baseURL = 'http://localhost:3000'
 
@@ -13,6 +14,7 @@ export const loginRequest = async (user, password) => {
 }
 
 export const getAnswerListService = async () => {
-  const { data } = await axios.get(`${_baseURL}/posts`)
-  return data
+  // const { data } = await axios.get(`${_baseURL}/posts`)
+  // return data
+  return jsonFile.posts
 }
