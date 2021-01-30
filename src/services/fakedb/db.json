@@ -31,10 +31,16 @@
       "en": "You can attach an image using the paperclip button in chat 📎 or by dragging the file into the chat window. If for some reason this method is not suitable, you can use a third-party service, for example https://prnt.sc/ or https://pastenow.ru/"
     },
     {
-      "title": "Google Search Console",
-      "ru": "Подтвердить домен Вы можете по инструкции\n    https://www.ukraine.com.ua/wiki/domain/third-party-services/google-search-console/",
-      "ua": "Підтвердити домен Ви можете за інструкцією\n     https://www.ukraine.com.ua/wiki/domain/third-party-services/google-search-console/",
-      "en": "You can confirm the domain following the instructions\n     https://www.ukraine.com.ua/wiki/domain/third-party-services/google-search-console/"
+      "title": "DNS -> Google Search Console",
+      "ru": "Подтвердить домен Вы можете по инструкции\nhttps://www.ukraine.com.ua/wiki/domain/third-party-services/google-search-console/",
+      "ua": "Підтвердити домен Ви можете за інструкцією\nhttps://www.ukraine.com.ua/wiki/domain/third-party-services/google-search-console/",
+      "en": "You can confirm the domain following the instructions\nhttps://www.ukraine.com.ua/wiki/domain/third-party-services/google-search-console/"
+    },
+    {
+      "title": "DNS -> Facebook Business",
+      "ru": "Подтвердить домен Вы можете по инструкции\nhttps://www.ukraine.com.ua/wiki/domain/third-party-services/facebook-business/",
+      "ua": "Підтвердити домен Ви можете за інструкцією\nhttps://www.ukraine.com.ua/wiki/domain/third-party-services/facebook-business/",
+      "en": "You can confirm the domain following the instructions\nhttps://www.ukraine.com.ua/wiki/domain/third-party-services/facebook-business/"
     },
     {
       "title": "Тикет -> ТП -> Несколько часов",
@@ -87,6 +93,53 @@
       "title": "VPS -> Тест",
       "ru": "Чтобы воспользоваться тестовым периодом, вам необходимо оформить заказ на VPS и оплатить его картой. В случае, если VPS по каким-либо причинам вам не подойдет, то мы вернем вам средства на карту без дополнительных вопросов, согласно гарантии возврата денег — https://www.ukraine.com.ua/legal/moneybackguarantee/\nЕсли по объективным причинам указанный выше способ вам не подходит, создайте, пожалуйста, запрос в техподдержку и опишите вашу ситуацию. В течении суток администраторы рассмотрят вопрос предоставления вам тестового периода без оплаты.",
       "ua": "Щоб скористатися тестовим періодом, вам необхідно оформити замовлення на VPS і оплатити його карткою. У разі, якщо VPS з яких-небудь причин вам не підійде, то ми повернемо вам кошти на карту без додаткових питань, згідно гарантії повернення грошей — https://www.ukraine.com.ua/legal/moneybackguarantee/\nЯкщо з об’єктивних причин зазначений вище спосіб вам не підходить, створіть, будь ласка, запит в техпідтримку і опишіть вашу ситуацію. Протягом доби адміністратори розглянуть питання надання вам тестового періоду без оплати."
+    },
+    {
+      "title": "Активация хостинга",
+      "ru": "Активация хостинга занимает до 30 минут\nПожалуйста, ожидайте.",
+      "ua": "Активація хостингу займає до 30 хвилин\nБудь ласка, чекайте.",
+      "en": "Hosting activation takes up to 30 minutes\nPlease wait."
+    },
+    {
+      "title": "Активация домена",
+      "ru": "Активация домена может занимать до 24 часов\nТак же информация на сайте https://wiki.ukraine.com.ua/domain:paid-but-not-working\nПожалуйста, ожидайте.",
+      "ua": "Активація домену може займати до 24 годин\nТак само інформація на сайті https://wiki.ukraine.com.ua/domain:paid-but-not-working\nБудь ласка, чекайте.",
+      "en": "Domain activation can take up to 24 hours\nAlso information on the website https://wiki.ukraine.com.ua/domain:paid-but-not-working\nPlease wait."
+    },
+    {
+      "title": "FTP -> Добавление IP",
+      "ru": "Перейдите в раздел \"Хостинг - FTP - Безопасность\" и добавьте Ваш IP в список по инструкции\nhttps://www.ukraine.com.ua/wiki/hosting/ftp/security/\nИзменения вступают в силу в течении 15-30 минут",
+      "ua": "Перейдіть в розділ \"Хостинг - FTP - Безопасность\" і додайте свій IP в список за інструкцією\nhttps://www.ukraine.com.ua/wiki/hosting/ftp/security/\nЗміни вступають в силу в протягом 15-30 хвилин",
+      "en": "Go to the \"Hosting - FTP - Safety\" section and add your IP to the list according to the instructions\nhttps://www.ukraine.com.ua/wiki/hosting/ftp/security/\nChanges take effect within 15-30 minutes"
+    },
+    {
+      "title": "Логи Apache",
+      "ru": "Логи веб-сервера доступны по инструкциям\nhttps://www.ukraine.com.ua/wiki/hosting/my-sites/access-log/\nhttps://www.ukraine.com.ua/wiki/hosting/my-sites/error-log/",
+      "ua": "Логи веб-сервера доступні за інструкціями\nhttps://www.ukraine.com.ua/wiki/hosting/my-sites/access-log/\nhttps://www.ukraine.com.ua/wiki/hosting/my-sites/error-log/",
+      "en": "Web server logs are available by following instructions\nhttps://www.ukraine.com.ua/wiki/hosting/my-sites/access-log/\nhttps://www.ukraine.com.ua/wiki/hosting/my-sites/error-log/"
+    },
+    {
+      "title": "Пинг и трасса",
+      "ru": "Для более детального рассмотрения ситуации выполните, пожалуйста, к вашему сайту пинг — https://wiki.ukraine.com.ua/hosting:diagnostics:ping — и трассировку — https://wiki.ukraine.com.ua/hosting:diagnostics:tracert — и прикрепите в чат скриншоты с результатами их выполнения — https://wiki.ukraine.com.ua/hosting:screenshot",
+      "ua": "Для більш детального розгляду ситуації виконайте, будь ласка, до вашого сайту пінг — https://wiki.ukraine.com.ua/hosting:diagnostics:ping — і трасування — https://wiki.ukraine.com.ua/hosting:diagnostics:tracert — і прикріпіть в чат скріншоти з результатами їх виконання — https://wiki.ukraine.com.ua/hosting:screenshot"
+    },
+    {
+      "title":"DNS - Добавить запись",
+      "ru":"Добавление DNS записи для домена Вы можете по инструкции https://www.ukraine.com.ua/wiki/domain/management/settings/add/",
+      "ua": "Додати DNS записи для домену Ви можете за інструкцією https://www.ukraine.com.ua/wiki/domain/management/settings/add/",
+      "en": "You can add a DNS record for a domain following the instructions https://www.ukraine.com.ua/wiki/domain/management/settings/add/"
+    },
+    {
+      "title": "Возврат средств",
+      "ru": "Возврат проводится в автоматическом режиме по инструкции\nhttps://www.ukraine.com.ua/wiki/account/service-delete/",
+      "ua": "Повернення проводиться в автоматичному режимі за інструкцією\nhttps://www.ukraine.com.ua/wiki/account/service-delete/",
+      "en": "Refunds are made automatically according to the instructions\nhttps://www.ukraine.com.ua/wiki/account/service-delete/"
+    },
+    {
+      "title": "Настройка домена и сертификата CloudFlare",
+      "ru": "Domain and site setting is carried out according to the instructions\nhttps://www.ukraine.com.ua/wiki/hosting/ddos/cloudflare/\nhttps://www.ukraine.com.ua/wiki/hosting/ssl/install/cloudflare/",
+      "ua": "Налаштування домену і сайту проводиться за інструкцією\nhttps://www.ukraine.com.ua/wiki/hosting/ddos/cloudflare/\nhttps://www.ukraine.com.ua/wiki/hosting/ssl/install/cloudflare/",
+      "en": "Domain and site setting is carried out according to the instructions\nhttps://www.ukraine.com.ua/wiki/hosting/ddos/cloudflare/\nhttps://www.ukraine.com.ua/wiki/hosting/ssl/install/cloudflare/"
     }
   ]
 }

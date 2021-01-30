@@ -23,8 +23,8 @@ const AnswerList = () => {
 
   const AnswerPost = ({ item: { title, en, ru, ua } }) => {
     return (
-      <div className='answer-item flex border-dashed border-b border-w'>
-        <div className='w-full'>{title}</div>
+      <div className='answer-item flex border-dashed border-b border-w py-1 px-2 hover:bg-gray-200 '>
+        <div className='w-full my-auto'>{title}</div>
         <div className='justify-self-end flex'>
           <CopyToClipboard
             text={addHello ? helloManager('en', time) + en : en}
@@ -51,7 +51,7 @@ const AnswerList = () => {
 
   const Main = () => {
     return (
-      <div className='flex flex-col h-full w-full max-h-full bg-white rounded-2xl space-y-2 p-3 overflow-auto'>
+      <div className='flex flex-col h-full w-full max-h-full bg-white rounded-2xl p-3 overflow-auto'>
         {filteredAnswerList.map((item, index) => (
           <AnswerPost item={item} key={index} />
         ))}

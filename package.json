@@ -4,7 +4,7 @@
     "build": "snowpack build",
     "json-server": "json-server --watch src/services/fakedb/db.json",
     "dev": "concurrently \"npm run start\" \"npm run json-server\" ",
-    "test": "echo \"This template does not include a test runner by default.\" && exit 1"
+    "jenkins:build":"npm install && npm run build"
   },
   "devDependencies": {
     "@snowpack/plugin-postcss": "^1.1.0",

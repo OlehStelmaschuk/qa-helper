@@ -49,80 +49,74 @@ const SearchPanel = () => {
       />
 
       <div className='search-button-block'>
-        <a
-          href='#'
+        <div
           className={
             dashboard.time === 'auto'
-              ? 'bg-gray-200 text-black p-2  rounded-l'
-              : 'bg-black text-white p-2  rounded-l'
+              ? 'bg-gray-200 text-black p-2 rounded-l cursor-pointer'
+              : 'bg-black text-white p-2 rounded-l cursor-pointer'
           }
           title='Automatic'
           onClick={() => setHelloTime('auto')}
         >
           <RefreshCw />
-        </a>
-        <a
-          href='#'
+        </div>
+        <div
           className={
             dashboard.time === 'sunrise'
-              ? 'bg-gray-200 text-black p-2'
-              : 'bg-black text-white p-2'
+              ? 'bg-gray-200 text-black p-2 cursor-pointer'
+              : 'bg-black text-white p-2 cursor-pointer'
           }
           title='Morning'
           onClick={() => setHelloTime('sunrise')}
         >
           <Sunrise />
-        </a>
-        <a
-          href='#'
+        </div>
+        <div
           className={
             dashboard.time === 'day'
-              ? 'bg-gray-200 text-black p-2'
-              : 'bg-black text-white p-2'
+              ? 'bg-gray-200 text-black p-2 cursor-pointer'
+              : 'bg-black text-white p-2 cursor-pointer'
           }
           title='Day'
           onClick={() => setHelloTime('day')}
         >
           <Sun />
-        </a>
-        <a
-          href='#'
+        </div>
+        <div
           className={
             dashboard.time === 'sunset'
-              ? 'bg-gray-200 text-black p-2'
-              : 'bg-black text-white p-2'
+              ? 'bg-gray-200 text-black p-2 cursor-pointer'
+              : 'bg-black text-white p-2 cursor-pointer'
           }
           title='Evening'
           onClick={() => setHelloTime('sunset')}
         >
           <Sunset />
-        </a>
-        <a
-          href='#'
+        </div>
+        <div
           className={
             dashboard.time === 'night'
-              ? 'bg-gray-200 text-black p-2 rounded-r'
-              : 'bg-black text-white p-2 rounded-r'
+              ? 'bg-gray-200 text-black p-2 rounded-r cursor-pointer'
+              : 'bg-black text-white p-2 rounded-r cursor-pointer'
           }
           title='Night'
           onClick={() => setHelloTime('night')}
         >
           <Moon />
-        </a>
+        </div>
       </div>
 
-      <a
-        href='#'
+      <div
         className={
           !dashboard.addHello
-            ? ' bg-black text-white p-2 rounded mx-3'
-            : 'bg-yellow-400 text-black p-2 rounded mx-3'
+            ? ' bg-black text-white p-2 rounded mx-3 cursor-pointer'
+            : 'bg-yellow-400 text-black p-2 rounded mx-3 cursor-pointer'
         }
         title='Add hello message'
         onClick={changeHello}
       >
         <MessageSquare /> <Plus />
-      </a>
+      </div>
     </Fragment>
   )
 }
