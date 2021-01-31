@@ -6,6 +6,7 @@ export const dashboardReducer = (
     addHello: false,
     searchString: '',
     answerList: {},
+    category: 'all',
     filteredAnswerList: {},
   },
   { type, payload }
@@ -27,17 +28,12 @@ export const dashboardReducer = (
       return {
         ...state,
         searchString: payload,
-        filteredAnswerList: state.answerList.filter((item) => {
-          const regex = new RegExp(`${payload}`, 'gi')
-          if (state.searchString !== '')
-            return (
-              item.title.match(regex) ||
-              (item.ru && item.ru.match(regex)) ||
-              (item.ua && item.ua.match(regex)) ||
-              (item.en && item.en.match(regex))
-            )
-          else return item
-        }),
+      }
+    }
+    case TYPE.FILTERED_ANSWER_LIST_SET: {
+      return {
+        ...state,
+        filteredAnswerList: payload,
       }
     }
     case TYPE.SET_SEARCH_RESET: {
@@ -68,6 +64,12 @@ export const dashboardReducer = (
         answerList: {},
         answerListSuccess: false,
         error: payload,
+      }
+    }
+    case TYPE.SET_CATEGORY: {
+      return {
+        ...state,
+        category: payload,
       }
     }
     default:

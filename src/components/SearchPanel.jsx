@@ -14,6 +14,8 @@ import {
   changeHelloAction,
   setSearchString,
   resetSearchString,
+  filterItems,
+  setCategory,
 } from '../store/actions/dashboardAction'
 
 const SearchPanel = () => {
@@ -30,10 +32,14 @@ const SearchPanel = () => {
 
   const setSearchStringAction = (searchString) => {
     dispatch(setSearchString(searchString))
+    dispatch(filterItems())
   }
 
   const keyPressHandler = (e) => {
-    if (e.code === 'Escape') dispatch(resetSearchString())
+    if (e.code === 'Escape') {
+      dispatch(resetSearchString())
+      dispatch(setCategory('all'))
+    }
   }
   return (
     <Fragment>

@@ -15,7 +15,39 @@ export const changeHelloAction = (setToFalse) => async (dispatch, getState) => {
   })
 }
 
-export const setSearchString = (searchString) => async (dispatch) => {
+export const filterItems = () => async (dispatch, getState) => {
+  const filteredItems = getState().dashboard.answerList.filter((item) => {
+    const { title, ru, ua, en, category } = item
+    const categoryState = getState().dashboard.category
+    const searchString = getState().dashboard.searchString
+    const regex = new RegExp(searchString, 'gi')
+    if (searchString !== '' && categoryState === 'all')
+      return (
+        title.match(regex) ||
+        (ru && ru.match(regex)) ||
+        (ua && ua.match(regex)) ||
+        (en && en.match(regex))
+      )
+    if (categoryState !== 'all') {
+      if (searchString !== '')
+        return (
+          category === categoryState &&
+          (title.match(regex) ||
+            (ru && ru.match(regex)) ||
+            (ua && ua.match(regex)) ||
+            (en && en.match(regex)))
+        )
+      else return category === categoryState
+    } else return item
+  })
+
+  dispatch({
+    type: TYPE.FILTERED_ANSWER_LIST_SET,
+    payload: filteredItems,
+  })
+}
+
+export const setSearchString = (searchString) => async (dispatch, getState) => {
   dispatch({
     type: TYPE.SET_SEARCH_STRING,
     payload: searchString,
@@ -45,4 +77,11 @@ export const getAnswerList = () => async (dispatch) => {
       type: TYPE.ANSWER_LIST_FAIL,
     })
   }
+}
+
+export const setCategory = (category) => async (dispatch) => {
+  dispatch({
+    type: TYPE.SET_CATEGORY,
+    payload: category,
+  })
 }
