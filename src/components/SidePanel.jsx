@@ -15,62 +15,62 @@ const SidePanel = () => {
   const listData = [
     {
       item: 'Main',
-      icon: <Icon.Home className='mx-auto' />,
+      icon: <Icon.Home />,
       categoryName: 'all',
     },
     {
       item: 'Hosting',
-      icon: <Icon.HardDrive className='mx-auto' />,
+      icon: <Icon.HardDrive />,
       categoryName: 'hosting',
     },
     {
       item: 'Domain',
-      icon: <Icon.Globe className='mx-auto' />,
+      icon: <Icon.Globe />,
       categoryName: 'domain',
     },
     {
       item: 'VPS',
-      icon: <Icon.Cpu className='mx-auto' />,
+      icon: <Icon.Cpu />,
       categoryName: 'vps',
     },
     {
       item: 'Cash',
-      icon: <Icon.DollarSign className='mx-auto' />,
+      icon: <Icon.DollarSign />,
       categoryName: 'cash',
     },
     {
       item: 'User',
-      icon: <Icon.User className='mx-auto' />,
+      icon: <Icon.User />,
       categoryName: 'user',
     },
     {
       item: 'Database',
-      icon: <Icon.Database className='mx-auto' />,
+      icon: <Icon.Database />,
       categoryName: 'database',
     },
     {
       item: 'CMS',
-      icon: <Icon.Layout className='mx-auto' />,
+      icon: <Icon.Layout />,
       categoryName: 'cms',
     },
     {
       item: 'Mail',
-      icon: <Icon.Mail className='mx-auto' />,
+      icon: <Icon.Mail />,
       categoryName: 'mail',
     },
     {
       item: 'Restriction',
-      icon: <Icon.Slash className='mx-auto' />,
+      icon: <Icon.Slash />,
       categoryName: 'restriction',
     },
     {
       item: 'Errors',
-      icon: <Icon.XCircle className='mx-auto' />,
+      icon: <Icon.XCircle />,
       categoryName: 'errors',
     },
     {
       item: 'Redirect',
-      icon: <Icon.Send className='mx-auto' />,
+      icon: <Icon.Send />,
       categoryName: 'redirect',
     },
   ]
@@ -78,11 +78,8 @@ const SidePanel = () => {
   const CategoryItem = ({ item: { categoryName, icon, item } }) => {
     return (
       <li
-        className={`text-center cursor-pointer py-1 ${
-          dashboard.category === categoryName &&
-          `text-indigo-900 bg-yellow-200 rounded`
-        }`}
-        onClick={(e) => categoryHandler(categoryName)}
+        className={`item ${dashboard.category === categoryName && `active`}`}
+        onClick={() => categoryHandler(categoryName)}
       >
         {icon}
         {item}
@@ -94,9 +91,7 @@ const SidePanel = () => {
     return <CategoryItem key={index} item={item} />
   })
 
-  return (
-    <ul className='flex flex-col justify-center space-y-2'>{catalogList}</ul>
-  )
+  return <ul className='side-list'>{catalogList}</ul>
 }
 
 export default SidePanel

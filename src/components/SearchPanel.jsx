@@ -1,127 +1,97 @@
 import React, { Fragment } from 'react'
-import {
-  Sun,
-  Sunrise,
-  Sunset,
-  Moon,
-  RefreshCw,
-  MessageSquare,
-  Plus,
-} from 'react-feather'
+import * as ICON from 'react-feather'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-  setHelloTimeAction,
-  changeHelloAction,
-  setSearchString,
-  resetSearchString,
-  filterItems,
-  setCategory,
-} from '../store/actions/dashboardAction'
+import * as ACTION from '../store/actions/dashboardAction'
+
+const timeSelectorList = [
+  { time: 'auto', title: 'Automatic', icon: <ICON.RefreshCw /> },
+  { time: 'sunrise', title: 'Morning', icon: <ICON.Sunrise /> },
+  { time: 'day', title: 'Day', icon: <ICON.Sun /> },
+  { time: 'sunset', title: 'Evening', icon: <ICON.Sunset /> },
+  { time: 'night', title: 'Night', icon: <ICON.Moon /> },
+]
 
 const SearchPanel = () => {
   const dispatch = useDispatch()
   const dashboard = useSelector((state) => state.dashboard)
 
   const setHelloTime = (data) => {
-    dispatch(setHelloTimeAction(data))
+    dispatch(ACTION.setHelloTimeAction(data))
   }
 
   const changeHello = () => {
-    dispatch(changeHelloAction())
+    dispatch(ACTION.changeHelloAction())
   }
 
   const setSearchStringAction = (searchString) => {
-    dispatch(setSearchString(searchString))
-    dispatch(filterItems())
+    dispatch(ACTION.setSearchString(searchString))
+    dispatch(ACTION.filterItems())
+  }
+
+  const resetSearch = () => {
+    dispatch(ACTION.resetSearchString())
+    dispatch(ACTION.setCategory('all'))
   }
 
   const keyPressHandler = (e) => {
     if (e.code === 'Escape') {
-      dispatch(resetSearchString())
-      dispatch(setCategory('all'))
+      resetSearch()
     }
   }
+
+  const TimeButtonComponent = ({ time, title, icon }) => {
+    return (
+      <div
+        className={
+          dashboard.time === time ? 'time-button active' : 'time-button'
+        }
+        title={title}
+        onClick={() => setHelloTime(time)}
+      >
+        {icon}
+      </div>
+    )
+  }
+
   return (
     <Fragment>
-      <input
-        className='max-w-screen-xl flex-grow h-5/6 mx-3 rounded-xl text-2xl pl-2 placeholder-purple-500 placeholder-opacity-60'
-        placeholder='Search by text or tag'
-        value={dashboard.searchString}
-        onChange={(e) => {
-          setSearchStringAction(e.target.value)
-        }}
-        onKeyDown={(e) => keyPressHandler(e)}
-        disabled={!dashboard.answerListSuccess}
-      />
-
-      <div className='search-button-block'>
+      <div className='search-block-input-group'>
+        <input
+          className='search-block-input'
+          placeholder='Search by title, tags or content'
+          value={dashboard.searchString}
+          onChange={(e) => {
+            setSearchStringAction(e.target.value)
+          }}
+          onKeyDown={(e) => keyPressHandler(e)}
+          disabled={!dashboard.answerListSuccess}
+        />
         <div
-          className={
-            dashboard.time === 'auto'
-              ? 'bg-gray-200 text-black p-2 rounded-l cursor-pointer'
-              : 'bg-black text-white p-2 rounded-l cursor-pointer'
-          }
-          title='Automatic'
-          onClick={() => setHelloTime('auto')}
+          className='clear-button'
+          title='Clear'
+          onClick={() => resetSearch()}
         >
-          <RefreshCw />
-        </div>
-        <div
-          className={
-            dashboard.time === 'sunrise'
-              ? 'bg-gray-200 text-black p-2 cursor-pointer'
-              : 'bg-black text-white p-2 cursor-pointer'
-          }
-          title='Morning'
-          onClick={() => setHelloTime('sunrise')}
-        >
-          <Sunrise />
-        </div>
-        <div
-          className={
-            dashboard.time === 'day'
-              ? 'bg-gray-200 text-black p-2 cursor-pointer'
-              : 'bg-black text-white p-2 cursor-pointer'
-          }
-          title='Day'
-          onClick={() => setHelloTime('day')}
-        >
-          <Sun />
-        </div>
-        <div
-          className={
-            dashboard.time === 'sunset'
-              ? 'bg-gray-200 text-black p-2 cursor-pointer'
-              : 'bg-black text-white p-2 cursor-pointer'
-          }
-          title='Evening'
-          onClick={() => setHelloTime('sunset')}
-        >
-          <Sunset />
-        </div>
-        <div
-          className={
-            dashboard.time === 'night'
-              ? 'bg-gray-200 text-black p-2 rounded-r cursor-pointer'
-              : 'bg-black text-white p-2 rounded-r cursor-pointer'
-          }
-          title='Night'
-          onClick={() => setHelloTime('night')}
-        >
-          <Moon />
+          X
         </div>
       </div>
 
+      <div className='search-button-block'>
+        {timeSelectorList.map((item, index) => (
+          <TimeButtonComponent
+            key={index}
+            time={item.time}
+            title={item.title}
+            icon={item.icon}
+          />
+        ))}
+      </div>
+
       <div
-        className={
-          !dashboard.addHello
-            ? ' bg-black text-white p-2 rounded mx-3 cursor-pointer'
-            : 'bg-yellow-400 text-black p-2 rounded mx-3 cursor-pointer'
-        }
+        className={dashboard.addHello ? 'hello-button active' : 'hello-button'}
         title='Add hello message'
         onClick={changeHello}
       >
-        <MessageSquare /> <Plus />
+        <ICON.MessageSquare /> <ICON.Plus />
       </div>
     </Fragment>
   )

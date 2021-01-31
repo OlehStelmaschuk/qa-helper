@@ -1,5 +1,5 @@
 import React from 'react'
-import '../assets/dashboard.scss'
+import '../assets/dashboard.css'
 import { SearchPanel, AnswerList, SidePanel } from '../components'
 
 const Dashboard = () => {
@@ -8,7 +8,7 @@ const Dashboard = () => {
       <div className='side-block'>
         <SidePanel />
       </div>
-      <div className='search-block'>
+      <div className='search-block-main'>
         <SearchPanel />
       </div>
       <div className='main-block'>
