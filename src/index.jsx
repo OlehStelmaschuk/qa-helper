@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import App from './App'
-import './assets/main.scss'
+import './assets/main.css'
 import store from './store/store'
 
 const rootNode = document.getElementById('root')

@@ -3,8 +3,8 @@ import * as TYPE from '../constants/dashboardConstants'
 export const dashboardReducer = (
   state = {
     time: 'auto',
-    addHello: false,
     searchString: '',
+    addHello: false,
     answerList: {},
     category: 'all',
     filteredAnswerList: {},
@@ -16,12 +16,6 @@ export const dashboardReducer = (
       return {
         ...state,
         time: payload,
-      }
-    }
-    case TYPE.SET_HELLO_MESSAGE: {
-      return {
-        ...state,
-        addHello: payload,
       }
     }
     case TYPE.SET_SEARCH_STRING: {
@@ -70,6 +64,12 @@ export const dashboardReducer = (
       return {
         ...state,
         category: payload,
+      }
+    }
+    case TYPE.SET_HELLO_MESSAGE: {
+      return {
+        ...state,
+        addHello: payload,
       }
     }
     default:

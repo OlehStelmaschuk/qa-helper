@@ -9,10 +9,13 @@ export const setHelloTimeAction = (data) => async (dispatch) => {
 }
 
 export const changeHelloAction = (setToFalse) => async (dispatch, getState) => {
-  dispatch({
-    type: TYPE.SET_HELLO_MESSAGE,
-    payload: setToFalse ? false : !getState().dashboard.addHello,
-  })
+  if (setToFalse && !getState().dashboard.addHello) {
+  } else {
+    dispatch({
+      type: TYPE.SET_HELLO_MESSAGE,
+      payload: setToFalse ? false : !getState().dashboard.addHello,
+    })
+  }
 }
 
 export const filterItems = () => async (dispatch, getState) => {
@@ -47,7 +50,7 @@ export const filterItems = () => async (dispatch, getState) => {
   })
 }
 
-export const setSearchString = (searchString) => async (dispatch, getState) => {
+export const setSearchString = (searchString) => async (dispatch) => {
   dispatch({
     type: TYPE.SET_SEARCH_STRING,
     payload: searchString,

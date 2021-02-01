@@ -1,95 +1,111 @@
 @layer components {
   .parent{
-    @apply max-w-screen-xl w-full h-5/6 grid grid-rows-2
+    @apply max-w-screen-xl w-full h-full grid grid-rows-2
   }
 
   .search-block-main{
-    @apply rounded-tr-lg bg-green-100 flex justify-center items-center
+    @apply rounded-tr-lg bg-indigo-100 flex justify-center items-center
   }
   .main-block{
-    @apply rounded-br-lg bg-indigo-100 p-3
+    @apply rounded-br-lg bg-indigo-100 sm:p-0 md:p-3
   }
   .side-block{
-    @apply flex-col justify-center items-center rounded-l-lg bg-yellow-50 row-span-2 pt-3
+    @apply flex-col justify-center items-center rounded-l-lg bg-yellow-50 row-span-2
   }
   .search-button-block{
     @apply flex
+  }
+
+  .search-block-input{
+    @apply w-full h-full text-2xl pl-2 placeholder-purple-500 placeholder-opacity-60 focus:outline-none focus:border-green-300 border-l border-t border-b
+  }
+
+  .search-block-input-group{
+    @apply max-w-screen-xl flex-grow h-5/6 md:mx-3 sm:mx-1 flex pr-3
+  }
+
+  .clear-button{
+    @apply cursor-pointer w-12 flex items-center justify-center border-t border-r border-b bg-black text-white rounded-r-xl border-black
+  }
+
+  .clear-button:hover{
+    @apply bg-gray-200 border-gray-200 text-black
+  }
+
+  .time-button{
+    @apply cursor-pointer bg-black text-white p-2
+  }
+
+  .time-button.active{
+    @apply bg-gray-200 text-black p-2
+  }
+  .time-button:first-child{
+    @apply rounded-l
+  }
+
+  .time-button:last-child{
+    @apply rounded-r
+  }
+
+  .hello-button
+  {
+    @apply bg-black text-white p-2 rounded mx-3 cursor-pointer
+  }
+  .hello-button.active{
+    @apply bg-yellow-400 text-black p-2
+  }
+
+  .side-list{
+    @apply flex flex-col justify-center space-y-2
+  }
+  .side-list > li > svg{
+    @apply mx-auto
+  }
+
+  .side-list .item{
+    @apply text-center cursor-pointer py-1
+  }
+  .side-list .item.active{
+    @apply text-indigo-900 bg-yellow-200
+  }
+
+  .answer-list-block{
+    @apply flex flex-col h-full w-full max-h-full bg-white overflow-auto md:rounded-2xl p-3 sm:rounded-none
+  }
+  .answer-list-block .post{
+    @apply flex border-dashed border-b py-1 px-2 hover:bg-gray-200
+  }
+
+  .answer-list-block .post .title{
+    @apply w-full my-auto cursor-pointer
+  }
+
+  .answer-list-block .post .lang-buttons{
+    @apply justify-self-end flex
+  }
+
+  .answer-list-block .post .lang-buttons .button{
+    @apply px-1 cursor-pointer
   }
 }
 
 .parent{
   grid-template-rows: 80px 1fr;
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: 85px 1fr;
   max-height: 800px;
 }
 
 .main-block{
-  max-height: 720px;
+  max-height: 730px;
+  height: 730px
 }
 
-.search-block-input{
-  @apply w-full h-full rounded-l-xl text-2xl pl-2 placeholder-purple-500 placeholder-opacity-60
+.answer-list-block .post .animate {
+  animation: wobble 1s 1;
 }
 
-.search-block-input-group{
-  @apply max-w-screen-xl flex-grow h-5/6 mx-3 flex pr-3
-}
-
-.clear-button{
-  @apply cursor-pointer w-12 flex items-center justify-center border-t border-r border-b bg-black text-white rounded-r-xl border-black
-}
-
-.time-button{
-    @apply cursor-pointer bg-black text-white p-2
-}
-
-.time-button.active{
-  @apply bg-gray-200 text-black p-2
-}
-.time-button:first-child{
-  @apply rounded-l
-}
-
-.time-button:last-child{
-  @apply rounded-r
-}
-
-.hello-button
-{
-  @apply bg-black text-white p-2 rounded mx-3 cursor-pointer
-}
-.hello-button.active{
-  @apply bg-yellow-400 text-black p-2
-}
-
-.side-list{
-  @apply flex flex-col justify-center space-y-2
-}
-.side-list > li > svg{
-  @apply mx-auto
-}
-
-.side-list .item{
-  @apply text-center cursor-pointer py-1
-}
-.side-list .item.active{
-  @apply text-indigo-900 bg-yellow-200 rounded
-}
-
-.answer-list-block{
-  @apply flex flex-col h-full w-full max-h-full bg-white rounded-2xl p-3 overflow-auto
-}
-.answer-list-block .post{
-  @apply flex border-dashed border-b py-1 px-2 hover:bg-gray-200
-}
-.answer-list-block .post .title{
-  @apply w-full my-auto cursor-pointer
-}
-
-.answer-list-block .post .lang-buttons{
-  @apply justify-self-end flex
-}
-
-.answer-list-block .post .lang-buttons .button{
-  @apply px-1 cursor-pointer
+@keyframes wobble {
+  from{
+    background: forestgreen;
+  }
 }
