@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'npm run jenkins:build'
-                archiveArtifacts artifacts: 'build/**/*.*'
+                archiveArtifacts artifacts: 'frontend/build/**/*.*'
             }
         }
     }
