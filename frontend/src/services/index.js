@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const _baseURL = `/api`
+const _baseURL = `https://qahelper-hu.herokuapp.com/api`
 
 const config = {
   headers: {
