@@ -15,6 +15,10 @@ const Dashboard = ({ history }) => {
     }
   }, [userInfo, history])
 
+  useEffect(() => {
+    document.title = 'QAHelper || Dashboard'
+  }, [])
+
   return (
     <div className='parent'>
       <div className='side-block'>
