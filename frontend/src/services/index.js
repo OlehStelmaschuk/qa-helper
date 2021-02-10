@@ -1,6 +1,10 @@
 import axios from 'axios'
 
-const _baseURL = `https://qahelper-hu.herokuapp.com/api`
+const isProd = false
+
+const _baseURL = isProd
+  ? `https://qahelper-hu.herokuapp.com/api`
+  : `http://localhost:3000/api`
 
 const config = {
   headers: {

@@ -4,13 +4,13 @@
   }
 
   .search-block-main{
-    @apply rounded-tr-lg bg-indigo-100 flex justify-center items-center
+    @apply bg-indigo-100 flex justify-center items-center
   }
   .main-block{
-    @apply rounded-br-lg bg-indigo-100 sm:p-0 md:p-3
+    @apply bg-indigo-100 sm:p-0 md:p-3
   }
   .side-block{
-    @apply flex-col justify-center items-center rounded-l-lg bg-yellow-50 row-span-2
+    @apply flex-col justify-center items-center bg-yellow-50 row-span-2
   }
   .search-button-block{
     @apply flex
@@ -49,7 +49,7 @@
 
   .hello-button
   {
-    @apply bg-black text-white p-2 rounded mx-3 cursor-pointer
+    @apply transition-all duration-500 bg-black text-white p-2 rounded mx-3 cursor-pointer
   }
   .hello-button.active{
     @apply bg-yellow-400 text-black p-2
@@ -69,8 +69,8 @@
     @apply text-indigo-900 bg-yellow-200
   }
 
-  .answer-list-block{
-    @apply flex flex-col h-full w-full max-h-full bg-white overflow-auto md:rounded-2xl p-3 sm:rounded-none
+  .answer-list-block {
+    @apply flex flex-col h-full w-full max-h-full bg-white overflow-auto p-3
   }
   .answer-list-block .post{
     @apply flex border-dashed border-b py-1 px-2 hover:bg-gray-200
@@ -98,14 +98,4 @@
 .main-block{
   max-height: 730px;
   height: 730px
-}
-
-.answer-list-block .post .animate {
-  animation: wobble 1s 1;
-}
-
-@keyframes wobble {
-  from{
-    background: forestgreen;
-  }
 }

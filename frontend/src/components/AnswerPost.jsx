@@ -1,9 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { changeHelloAction } from '../store/actions/dashboardAction'
 import { CopyToClipboard } from 'react-copy-to-clipboard/lib/Component'
 import { helloManager } from '../utilites/helloManager'
 import { LangEn, LangRu, LangUa } from './LangImages'
 import { useDispatch, useSelector } from 'react-redux'
+import { Edit2 } from 'react-feather'
 
 const AnswerPost = ({ item: { title, en, ru, ua } }) => {
   const dispatch = useDispatch()
@@ -11,12 +13,33 @@ const AnswerPost = ({ item: { title, en, ru, ua } }) => {
 
   const disableHello = (e) => {
     dispatch(changeHelloAction(true))
-    e.closest('.post').animate([{ background: 'forestgreen' }], {
-      duration: 500,
-    })
+    e.closest('.post').animate(
+      [
+        {
+          background: 'transparent',
+        },
+        {
+          background: 'forestgreen',
+        },
+        {
+          background: 'transparent',
+        },
+      ],
+      {
+        duration: 700,
+      }
+    )
   }
+
   return (
     <div className='post'>
+      <Link
+        className='mr-2 cursor-pointer text-green-900'
+        title='Edit post'
+        to={'/'}
+      >
+        <Edit2 className='my-auto h-full' />
+      </Link>
       <CopyToClipboard
         text={dashboard.addHello ? helloManager('ru', dashboard.time) + ru : ru}
         title={ru}
