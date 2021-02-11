@@ -7,6 +7,8 @@ cache:
 
 build:
   stage: build
+  only:
+    - main
   script:
     - npm run jenkins:build
   artifacts:
@@ -26,3 +28,11 @@ shared:
 
   script:
     - scp -rp frontend/build/* $USERNAME@$HOST:$PATH_TO_WWW
+
+heroku:
+  stage: deploy
+  script:
+    - apt-get update -yq
+    - apt-get install -y ruby-dev
+    - gem install dpl
+    - dpl --provider=heroku --app=qahelper-hu --api_key=$HEROKU_API_KEY
