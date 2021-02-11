@@ -15,5 +15,11 @@ build:
 
 shared:
   stage: deploy
+  before_script:
+    - command -v ssh-agent >/dev/null
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
   script:
-    - scp -i /storage/id_rsa -rp frontend/build/* $USERNAME@$HOST:$PATH_TO_WWW
+    - scp -rp frontend/build/* $USERNAME@$HOST:$PATH_TO_WWW
