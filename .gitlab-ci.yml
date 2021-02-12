@@ -1,11 +1,10 @@
-image: node:latest
-
 cache:
   paths:
     - node_modules/
     - frontend/node_modules/
 
 build:
+  image: node:latest
   stage: build
   only:
     - main
@@ -30,6 +29,7 @@ shared:
     - scp -rp frontend/build/* $USERNAME@$HOST:$PATH_TO_WWW
 
 heroku:
+  image: ruby:latest
   stage: deploy
   script:
     - apt-get update -yq
