@@ -6,8 +6,6 @@ cache:
 build:
   image: node:latest
   stage: build
-  only:
-    - main
   script:
     - npm run jenkins:build
   artifacts:
