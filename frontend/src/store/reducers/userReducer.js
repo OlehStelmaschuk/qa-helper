@@ -21,6 +21,11 @@ export const userReducer = (state = {}, { type, payload }) => {
         error: payload,
       }
     }
+    case TYPE.USER_LOGOUT:{
+      return {
+        loading: false,
+      }
+    }
     default:
       return state
   }
