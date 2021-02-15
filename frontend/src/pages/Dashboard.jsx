@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import '../assets/dashboard.css'
 import { SearchPanel, AnswerList, SidePanel } from '../components'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAnswerList } from '../store/actions/dashboardAction'
+import { logout } from '../store/actions/userLoginAction'
 
 const Dashboard = ({ history }) => {
   const dispatch = useDispatch()
@@ -19,7 +20,17 @@ const Dashboard = ({ history }) => {
     document.title = 'QAHelper || Dashboard'
   }, [])
 
+  const logoutHandler = () =>{
+    dispatch(logout())
+    history.push('/login')
+  }
+
   return (
+    <Fragment>
+      <div className='self-end text-white px-5 flex space-x-2'>
+        <div>User: {userInfo && userInfo.name}</div>
+      <div className='cursor-pointer' onClick={()=>logoutHandler()}>Logout</div>
+      </div>
     <div className='parent'>
       <div className='side-block'>
         <SidePanel />
@@ -31,6 +42,7 @@ const Dashboard = ({ history }) => {
         <AnswerList />
       </div>
     </div>
+    </Fragment>
   )
 }
 

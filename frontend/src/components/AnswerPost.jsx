@@ -10,6 +10,7 @@ import { Edit2 } from 'react-feather'
 const AnswerPost = ({ item: { title, en, ru, ua } }) => {
   const dispatch = useDispatch()
   const dashboard = useSelector((state) => state.dashboard)
+  const user = useSelector(state => state.user)
 
   const disableHello = (e) => {
     dispatch(changeHelloAction(true))
@@ -33,13 +34,14 @@ const AnswerPost = ({ item: { title, en, ru, ua } }) => {
 
   return (
     <div className='post'>
+      {user.userInfo.role === 'admin' &&
       <Link
         className='mr-2 cursor-pointer text-green-900'
         title='Edit post'
         to={'/'}
       >
         <Edit2 className='my-auto h-full' />
-      </Link>
+      </Link> }
       <CopyToClipboard
         text={dashboard.addHello ? helloManager('ru', dashboard.time) + ru : ru}
         title={ru}
