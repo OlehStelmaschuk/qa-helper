@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const isProd = false
+const isProd = true
 
 const _baseURL = isProd
   ? `https://qahelper-hu.herokuapp.com/api`
