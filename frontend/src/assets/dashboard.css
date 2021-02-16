@@ -95,6 +95,10 @@
   max-height: 800px;
 }
 
+.header-menu{
+  max-width: 1280px;
+  width: 100%;
+}
 .main-block{
   max-height: 730px;
   height: 730px

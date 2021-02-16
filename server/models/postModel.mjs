@@ -7,10 +7,16 @@ const postSchema = new Schema(
     title: {
       type: String,
       required: true,
+      unique: true,
     },
     category: {
       type: String,
       required: true,
+    },
+    weight: {
+      type: Int32,
+      required: true,
+      unique: true,
     },
     ru: {
       type: String,
