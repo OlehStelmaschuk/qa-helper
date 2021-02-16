@@ -44,6 +44,12 @@ export const filterItems = () => async (dispatch, getState) => {
     } else return item
   })
 
+  filteredItems.sort(function (a, b) {
+    if(!a.weight) a.weight = 99999;
+    if(!b.weight) b.weight = 99999;
+    return a.weight - b.weight;
+  });
+
   dispatch({
     type: TYPE.FILTERED_ANSWER_LIST_SET,
     payload: filteredItems,
@@ -71,6 +77,12 @@ export const getAnswerList = () => async (dispatch, getState) => {
 
     const token = getState().user.userInfo.token
     const data = await getAnswerListService(token)
+
+    data.sort(function (a, b) {
+      if(!a.weight) a.weight = 99999;
+      if(!b.weight) b.weight = 99999;
+      return a.weight - b.weight;
+    });
 
     dispatch({
       type: TYPE.ANSWER_LIST_SUCCESS,
