@@ -37,6 +37,7 @@ export const addNewPost = asyncHandler(async (req, res) => {
   const post = await Post.create({
     title,
     category,
+    weight,
     ru,
     ua,
     en,
@@ -46,6 +47,7 @@ export const addNewPost = asyncHandler(async (req, res) => {
     res.json({
       _id: post._id,
       title: post.title,
+      weight: post.weight,
       category: post.category,
       ru: post.ru,
       ua: post.ua,
@@ -66,6 +68,7 @@ export const updatePost = asyncHandler(async (req, res) => {
   if (post) {
     post.title = req.body.title || post.title
     post.category = req.body.category || post.category
+    post.weight = req.body.weight || post.weight
     post.ru = req.body.ru || post.ru
     post.ua = req.body.ua || post.ua
     post.en = req.body.en || post.en
@@ -75,6 +78,7 @@ export const updatePost = asyncHandler(async (req, res) => {
     res.json({
       title: updatedPost.title,
       category: updatedPost.category,
+      weight: updatedPost.weight,
       ru: updatedPost.ru,
       ua: updatedPost.ua,
       en: updatedPost.en,
