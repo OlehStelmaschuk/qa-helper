@@ -20,28 +20,33 @@ const Dashboard = ({ history }) => {
     document.title = 'QAHelper || Dashboard'
   }, [])
 
-  const logoutHandler = () =>{
+  const logoutHandler = () => {
     dispatch(logout())
     history.push('/login')
   }
 
   return (
     <Fragment>
-      <div className='self-end text-white px-5 flex space-x-2'>
+      <div className='header-menu justify-end text-white px-5 flex space-x-2'>
         <div>User: {userInfo && userInfo.name}</div>
-      <div className='cursor-pointer' onClick={()=>logoutHandler()}>Logout</div>
+        <div
+          className='cursor-pointer hover:text-yellow-400'
+          onClick={() => logoutHandler()}
+        >
+          Logout
+        </div>
       </div>
-    <div className='parent'>
-      <div className='side-block'>
-        <SidePanel />
+      <div className='parent'>
+        <div className='side-block'>
+          <SidePanel />
+        </div>
+        <div className='search-block-main'>
+          <SearchPanel />
+        </div>
+        <div className='main-block'>
+          <AnswerList />
+        </div>
       </div>
-      <div className='search-block-main'>
-        <SearchPanel />
-      </div>
-      <div className='main-block'>
-        <AnswerList />
-      </div>
-    </div>
     </Fragment>
   )
 }
