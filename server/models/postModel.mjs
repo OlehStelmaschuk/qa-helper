@@ -14,7 +14,7 @@ const postSchema = new Schema(
       required: true,
     },
     weight: {
-      type: Int32,
+      type: Number,
       required: true,
       unique: true,
     },
