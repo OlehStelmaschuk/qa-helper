@@ -72,6 +72,33 @@ export const dashboardReducer = (
         addHello: payload,
       }
     }
+    case TYPE.POST_DATA:
+    case TYPE.POST_CREATE:
+    case TYPE.POST_UPDATE: {
+      return {
+        ...state,
+        post: payload,
+      }
+    }
+    case TYPE.POST_CHANGE: {
+      return {
+        ...state,
+        newPost: payload,
+      }
+    }
+    case TYPE.POST_DATA_FAIL: {
+      return {
+        ...state,
+        post: null,
+        error: payload,
+      }
+    }
+    case TYPE.POST_CLEAR: {
+      return {
+        ...state,
+        post: null,
+      }
+    }
     default:
       return state
   }

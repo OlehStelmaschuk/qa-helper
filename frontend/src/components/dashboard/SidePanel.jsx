@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import * as Icon from 'react-feather'
-import { filterItems, setCategory } from '../store/actions/dashboardAction'
+import { filterItems, setCategory } from '../../store/actions/dashboardAction'
 
 const SidePanel = () => {
   const dispatch = useDispatch()

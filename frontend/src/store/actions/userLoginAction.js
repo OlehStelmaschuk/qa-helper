@@ -1,5 +1,5 @@
 import * as TYPE from '../constants/userConst'
-import { loginRequest } from '../../services'
+import { loginRequestService } from '../../services'
 
 export const login = (user, password) => async (dispatch) => {
   try {
@@ -7,7 +7,7 @@ export const login = (user, password) => async (dispatch) => {
       type: TYPE.USER_LOGIN_REQUEST,
     })
 
-    const data = await loginRequest(user, password)
+    const data = await loginRequestService(user, password)
 
     dispatch({
       type: TYPE.USER_LOGIN_SUCCESS,
@@ -25,9 +25,9 @@ export const login = (user, password) => async (dispatch) => {
   }
 }
 
-export const logout = () => async dispatch =>{
+export const logout = () => async (dispatch) => {
   dispatch({
-    type: TYPE.USER_LOGOUT
+    type: TYPE.USER_LOGOUT,
   })
   localStorage.removeItem('userInfo')
 }

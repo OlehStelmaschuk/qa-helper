@@ -87,6 +87,19 @@
   .answer-list-block .post .lang-buttons .button{
     @apply px-1 cursor-pointer
   }
+
+  .edit-form{
+    @apply space-y-2
+  }
+  .edit-form .item{
+    @apply flex w-full
+  }
+  .edit-form .item span{
+    @apply w-20
+  }
+  .edit-form .item textarea{
+    @apply w-full
+  }
 }
 
 .parent{

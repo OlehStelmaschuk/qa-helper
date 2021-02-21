@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import '../assets/login.scss'
-import { Loader, Message } from '../components/'
+import { Loader, Message } from '../components/dashboard'
 import { login } from '../store/actions/userLoginAction'
 
 const Login = ({ history }) => {
