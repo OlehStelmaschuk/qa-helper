@@ -1,5 +1,10 @@
 import * as TYPE from '../constants/dashboardConstants'
-import { getAnswerListService } from '../../services'
+import {
+  createPostService,
+  getAnswerListService,
+  getSingleAnswerService,
+  updatePostService,
+} from '../../services'
 
 export const setHelloTimeAction = (data) => async (dispatch) => {
   dispatch({
@@ -45,10 +50,10 @@ export const filterItems = () => async (dispatch, getState) => {
   })
 
   filteredItems.sort(function (a, b) {
-    if(!a.weight) a.weight = 99999;
-    if(!b.weight) b.weight = 99999;
-    return a.weight - b.weight;
-  });
+    if (!a.weight) a.weight = 99999
+    if (!b.weight) b.weight = 99999
+    return a.weight - b.weight
+  })
 
   dispatch({
     type: TYPE.FILTERED_ANSWER_LIST_SET,
@@ -79,10 +84,10 @@ export const getAnswerList = () => async (dispatch, getState) => {
     const data = await getAnswerListService(token)
 
     data.sort(function (a, b) {
-      if(!a.weight) a.weight = 99999;
-      if(!b.weight) b.weight = 99999;
-      return a.weight - b.weight;
-    });
+      if (!a.weight) a.weight = 99999
+      if (!b.weight) b.weight = 99999
+      return a.weight - b.weight
+    })
 
     dispatch({
       type: TYPE.ANSWER_LIST_SUCCESS,
@@ -95,9 +100,71 @@ export const getAnswerList = () => async (dispatch, getState) => {
   }
 }
 
+export const getSinglePost = (id) => async (dispatch, getState) => {
+  try {
+    const token = getState().user.userInfo.token
+    const data = await getSingleAnswerService(token, id)
+
+    dispatch({
+      type: TYPE.POST_DATA,
+      payload: data,
+    })
+  } catch (err) {
+    dispatch({
+      type: TYPE.POST_DATA_FAIL,
+    })
+  }
+}
+
+export const createPost = (postData) => async (dispatch, getState) => {
+  try {
+    const token = getState().user.userInfo.token
+    const data = await createPostService(token, postData)
+
+    dispatch({
+      type: TYPE.POST_CREATE,
+      payload: data,
+    })
+  } catch (err) {
+    dispatch({
+      type: TYPE.POST_DATA_FAIL,
+      payload: err,
+    })
+  }
+}
+
+export const updatePost = (id, postData) => async (dispatch, getState) => {
+  try {
+    const token = getState().user.userInfo.token
+    const data = await updatePostService(token, postData, id)
+
+    dispatch({
+      type: TYPE.POST_UPDATE,
+      payload: data,
+    })
+  } catch (err) {
+    dispatch({
+      type: TYPE.POST_DATA_FAIL,
+    })
+  }
+}
+
+export const postChange = (post) => async (dispatch) => {
+  dispatch({
+    type: TYPE.POST_CHANGE,
+    payload: post,
+  })
+}
+
 export const setCategory = (category) => async (dispatch) => {
   dispatch({
     type: TYPE.SET_CATEGORY,
     payload: category,
+  })
+}
+
+export const clearPost = () => async (dispatch) => {
+  dispatch({
+    type: TYPE.POST_CLEAR,
   })
 }

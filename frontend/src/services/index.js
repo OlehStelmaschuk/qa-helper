@@ -12,7 +12,7 @@ const config = {
   },
 }
 
-export const loginRequest = async (name, password) => {
+export const loginRequestService = async (name, password) => {
   const { data } = await axios.post(
     `${_baseURL}/users/login`,
     { name, password },
@@ -31,4 +31,41 @@ export const getAnswerListService = async (token) => {
   const { data } = await axios.get(`${_baseURL}/posts`, authConfig)
   return data
   // return jsonFile.posts
+}
+
+export const getSingleAnswerService = async (token, id) => {
+  const authConfig = {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  }
+  const { data } = await axios.get(`${_baseURL}/posts/${id}`, authConfig)
+  return data
+}
+
+export const createPostService = async (token, postData) => {
+  const authConfig = {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  }
+  const { data } = await axios.post(`${_baseURL}/posts`, postData, authConfig)
+  return data
+}
+
+export const updatePostService = async (token, postData, id) => {
+  const authConfig = {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  }
+  const { data } = await axios.put(
+    `${_baseURL}/posts/${id}`,
+    postData,
+    authConfig
+  )
+  return data
 }

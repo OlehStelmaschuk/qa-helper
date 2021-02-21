@@ -26,8 +26,9 @@ export const getPostByID = asyncHandler(async (req, res) => {
 // @route /api/posts/
 // @access Private
 export const addNewPost = asyncHandler(async (req, res) => {
-  const { title, category, ru, en, ua } = req.body
+  const { title, category, weight, ru, en, ua } = req.body
   const postExist = await Post.findOne({ title })
+  console.log('add')
 
   if (postExist) {
     res.status(400)

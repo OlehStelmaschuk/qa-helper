@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import * as ICON from 'react-feather'
 import { useDispatch, useSelector } from 'react-redux'
-import * as ACTION from '../store/actions/dashboardAction'
+import * as ACTION from '../../store/actions/dashboardAction'
 
 const timeSelectorList = [
   { time: 'auto', title: 'Automatic', icon: <ICON.RefreshCw /> },

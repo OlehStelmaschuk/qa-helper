@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from 'react'
 import '../assets/dashboard.css'
-import { SearchPanel, AnswerList, SidePanel } from '../components'
+import { SearchPanel, AnswerList, SidePanel } from '../components/dashboard'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAnswerList } from '../store/actions/dashboardAction'
 import { logout } from '../store/actions/userLoginAction'
