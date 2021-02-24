@@ -28,7 +28,6 @@ export const getPostByID = asyncHandler(async (req, res) => {
 export const addNewPost = asyncHandler(async (req, res) => {
   const { title, category, weight, ru, en, ua } = req.body
   const postExist = await Post.findOne({ title })
-  console.log('add')
 
   if (postExist) {
     res.status(400)
@@ -83,6 +82,22 @@ export const updatePost = asyncHandler(async (req, res) => {
       ru: updatedPost.ru,
       ua: updatedPost.ua,
       en: updatedPost.en,
+    })
+  } else {
+    res.status(404)
+    throw new Error('Post not found')
+  }
+})
+
+// @desc Delete Post
+// @route DELETE /api/posts/:id
+// @access Private
+export const deletePost = asyncHandler(async (req, res) => {
+  const post = await Post.findById(req.params.id)
+  if (post) {
+    await Post.findByIdAndDelete(req.params.id)
+    res.json({
+      msg: 'Deleted',
     })
   } else {
     res.status(404)

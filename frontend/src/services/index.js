@@ -69,3 +69,14 @@ export const updatePostService = async (token, postData, id) => {
   )
   return data
 }
+
+export const deletePostService = async (token, id) => {
+  const authConfig = {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  }
+  const { data } = await axios.delete(`${_baseURL}/posts/${id}`, authConfig)
+  return data
+}

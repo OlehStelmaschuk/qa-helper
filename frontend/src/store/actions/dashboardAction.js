@@ -1,6 +1,7 @@
 import * as TYPE from '../constants/dashboardConstants'
 import {
   createPostService,
+  deletePostService,
   getAnswerListService,
   getSingleAnswerService,
   updatePostService,
@@ -142,6 +143,17 @@ export const updatePost = (id, postData) => async (dispatch, getState) => {
       type: TYPE.POST_UPDATE,
       payload: data,
     })
+  } catch (err) {
+    dispatch({
+      type: TYPE.POST_DATA_FAIL,
+    })
+  }
+}
+
+export const postDelete = (id) => async (dispatch, getState) => {
+  try {
+    const token = getState().user.userInfo.token
+    await deletePostService(token, id)
   } catch (err) {
     dispatch({
       type: TYPE.POST_DATA_FAIL,

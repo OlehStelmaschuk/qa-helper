@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import * as Icon from 'react-feather'
 import { filterItems, setCategory } from '../../store/actions/dashboardAction'
@@ -11,6 +11,7 @@ const SidePanel = () => {
     dispatch(setCategory(item))
     dispatch(filterItems())
   }
+  useEffect(() => categoryHandler('all'), [])
 
   const listData = [
     {

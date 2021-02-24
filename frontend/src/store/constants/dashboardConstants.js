@@ -18,5 +18,6 @@ export const POST_CHANGE = 'POST_CHANGE'
 export const POST_CLEAR = 'POST_CLEAR'
 export const POST_CREATE = 'POST_CREATE'
 export const POST_UPDATE = 'POST_UPDATE'
+export const POST_DELETE = 'POST_DELETE'
 
 export const SET_CATEGORY = 'SET_CATEGORY'
