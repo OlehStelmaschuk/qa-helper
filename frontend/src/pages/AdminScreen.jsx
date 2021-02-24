@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../store/actions/userLoginAction'
 import '../assets/adminpage.scss'
 import { clearPost, getAnswerList } from '../store/actions/dashboardAction'
+import { Link } from 'react-router-dom'
 
 const AdminScreen = ({ history }) => {
   const dispatch = useDispatch()
@@ -44,12 +45,17 @@ const AdminScreen = ({ history }) => {
         <div className='side-block'>
           <ul className='side-list'>
             <li className={`item`}>
-              <Bookmark />
-              Answers
+              <Link to='/admin/post'>
+                <Bookmark />
+                Create post
+              </Link>
             </li>
+
             <li className={`item`}>
-              <AlignJustify />
-              Sorting
+              <Link to='/admin'>
+                <AlignJustify />
+                Sorting/List
+              </Link>
             </li>
           </ul>
         </div>

@@ -12,5 +12,6 @@ router
   .route('/:id')
   .get(protect, POST_CONTROLLER.getPostByID)
   .put(protect, POST_CONTROLLER.updatePost)
+  .delete(protect, POST_CONTROLLER.deletePost)
 
 export default router

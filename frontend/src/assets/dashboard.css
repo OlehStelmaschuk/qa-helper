@@ -58,7 +58,7 @@
   .side-list{
     @apply flex flex-col justify-center space-y-2
   }
-  .side-list > li > svg{
+  .side-list > li > svg, .side-list > li > a > svg {
     @apply mx-auto
   }
 
@@ -89,7 +89,7 @@
   }
 
   .edit-form{
-    @apply space-y-2
+    @apply space-y-2 flex-col h-full
   }
   .edit-form .item{
     @apply flex w-full
@@ -97,7 +97,7 @@
   .edit-form .item span{
     @apply w-20
   }
-  .edit-form .item textarea{
+  .edit-form .item textarea, .edit-form .item input{
     @apply w-full
   }
 }
@@ -115,4 +115,9 @@
 .main-block{
   max-height: 730px;
   height: 730px
+}
+
+.edit-form .item textarea{
+  resize: none;
+  min-height: 195px;
 }
