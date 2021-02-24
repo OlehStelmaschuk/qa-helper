@@ -21,6 +21,16 @@ export const loginRequestService = async (name, password) => {
   return data
 }
 
+export const getTranslateService = async (text, inLang, outLang) => {
+  if (outLang === 'ua') outLang = 'uk' // fix to TranslateAPI
+  const { data } = await axios.post(
+    `${_baseURL}/translate`,
+    { text, inLang, outLang },
+    config
+  )
+  return data
+}
+
 export const getAnswerListService = async (token) => {
   const authConfig = {
     headers: {

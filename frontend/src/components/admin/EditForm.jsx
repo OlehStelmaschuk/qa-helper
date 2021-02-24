@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import React, { useEffect, useState } from 'react'
 import { postChange } from '../../store/actions/dashboardAction'
+import { getTranslateService } from '../../services'
 
 const EditForm = () => {
   const { post } = useSelector((state) => state.dashboard)
@@ -15,6 +16,10 @@ const EditForm = () => {
   const changeHandler = async ({ target }) => {
     const { name, value } = target
     setState({ ...state, [name]: value })
+  }
+  const translateHandler = async (text, inLang, outLang) => {
+    const data = await getTranslateService(text, inLang, outLang)
+    setState({ ...state, [outLang]: data })
   }
 
   return (
@@ -76,6 +81,20 @@ const EditForm = () => {
           key='ua'
           onChange={changeHandler}
         />
+      </div>
+      <div className='flex justify-end'>
+        <div
+          className='hello-button'
+          onClick={(e) => translateHandler(state.ru, 'ru', 'en')}
+        >
+          <span>Translate RU to EN</span>
+        </div>
+        <div
+          className='hello-button'
+          onClick={(e) => translateHandler(state.ru, 'ru', 'ua')}
+        >
+          <span className=''>Translate RU to UA</span>
+        </div>
       </div>
     </div>
   )
