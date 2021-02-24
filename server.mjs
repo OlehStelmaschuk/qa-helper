@@ -9,7 +9,6 @@ import * as middleware from './server/middleware/index.mjs'
 import * as path from 'path'
 
 const __dirname = path.resolve()
-
 dotenv.config()
 await connectDB()
 const app = express()
