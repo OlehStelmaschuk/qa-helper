@@ -8,8 +8,8 @@ const SidePanel = () => {
   const dashboard = useSelector((state) => state.dashboard)
 
   const categoryHandler = (item) => {
-    dispatch(setCategory(item))
-    dispatch(filterItems())
+    dashboard.answerListSuccess && dispatch(setCategory(item))
+    dashboard.answerListSuccess && dispatch(filterItems())
   }
   useEffect(() => categoryHandler('all'), [])
 

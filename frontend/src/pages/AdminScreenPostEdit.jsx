@@ -5,18 +5,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../store/actions/userLoginAction'
 import '../assets/adminpage.scss'
 import { useParams } from 'react-router-dom'
-import {
-  clearPost,
-  getSinglePost,
-  postChange,
-} from '../store/actions/dashboardAction'
+import { clearPost, getSinglePost } from '../store/actions/dashboardAction'
 import { ButtonPanel, EditForm } from '../components/admin'
 
 const AdminScreenPostEdit = ({ history }) => {
   const dispatch = useDispatch()
   const { userInfo } = useSelector((state) => state.user)
   const { id } = useParams()
-  dispatch(clearPost())
+  useEffect(() => dispatch(clearPost()))
 
   useEffect(() => {
     if (!userInfo || userInfo.role !== 'admin') {

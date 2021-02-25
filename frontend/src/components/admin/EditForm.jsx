@@ -6,7 +6,14 @@ import { getTranslateService } from '../../services'
 const EditForm = () => {
   const { post } = useSelector((state) => state.dashboard)
   const dispatch = useDispatch()
-  const [state, setState] = useState({})
+  const [state, setState] = useState({
+    category: '',
+    weight: '',
+    title: '',
+    ru: '',
+    en: '',
+    ua: '',
+  })
   useEffect(() => {
     post && setState(post)
   }, [post])

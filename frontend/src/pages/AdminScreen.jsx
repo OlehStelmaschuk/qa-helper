@@ -10,8 +10,10 @@ import { Link } from 'react-router-dom'
 const AdminScreen = ({ history }) => {
   const dispatch = useDispatch()
   const { userInfo } = useSelector((state) => state.user)
-  dispatch(clearPost())
-  dispatch(getAnswerList())
+  useEffect(() => {
+    dispatch(clearPost())
+    dispatch(getAnswerList())
+  })
 
   useEffect(() => {
     if (!userInfo || userInfo.role !== 'admin') {

@@ -7,9 +7,10 @@ import { logout } from '../store/actions/userLoginAction'
 
 const Dashboard = ({ history }) => {
   const dispatch = useDispatch()
-  dispatch(getAnswerList())
+  useEffect(() => dispatch(getAnswerList()))
 
   const { userInfo } = useSelector((state) => state.user)
+
   useEffect(() => {
     if (!userInfo) {
       history.push('/login')
