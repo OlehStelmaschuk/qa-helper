@@ -51,6 +51,7 @@ export const filterItems = () => async (dispatch, getState) => {
   })
 
   filteredItems.sort(function (a, b) {
+    // set default weight if it's not set in database
     if (!a.weight) a.weight = 99999
     if (!b.weight) b.weight = 99999
     return a.weight - b.weight
@@ -85,6 +86,7 @@ export const getAnswerList = () => async (dispatch, getState) => {
     const data = await getAnswerListService(token)
 
     data.sort(function (a, b) {
+      // set default weight if it's not set in database
       if (!a.weight) a.weight = 99999
       if (!b.weight) b.weight = 99999
       return a.weight - b.weight
@@ -103,6 +105,9 @@ export const getAnswerList = () => async (dispatch, getState) => {
 
 export const getSinglePost = (id) => async (dispatch, getState) => {
   try {
+    await dispatch({
+      type: TYPE.POST_CLEAR,
+    })
     const token = getState().user.userInfo.token
     const data = await getSingleAnswerService(token, id)
 
@@ -113,6 +118,10 @@ export const getSinglePost = (id) => async (dispatch, getState) => {
   } catch (err) {
     dispatch({
       type: TYPE.POST_DATA_FAIL,
+      payload:
+        err.response && err.response.data.message
+          ? err.response.data.message
+          : err.message,
     })
   }
 }

@@ -29,6 +29,14 @@ const Dashboard = ({ history }) => {
   return (
     <Fragment>
       <div className='header-menu justify-end text-white px-5 flex space-x-2'>
+        {userInfo && userInfo.role === 'admin' && (
+          <div
+            className='cursor-pointer hover:text-yellow-400'
+            onClick={() => history.push('/admin')}
+          >
+            Admin Panel
+          </div>
+        )}
         <div>User: {userInfo && userInfo.name}</div>
         <div
           className='cursor-pointer hover:text-yellow-400'

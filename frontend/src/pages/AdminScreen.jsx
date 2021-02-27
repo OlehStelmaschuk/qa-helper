@@ -35,6 +35,12 @@ const AdminScreen = ({ history }) => {
         >
           Back
         </div>
+        <div
+          className='cursor-pointer hover:text-yellow-400'
+          onClick={() => history.push('/dashboard')}
+        >
+          Dashboard
+        </div>
         <div>User: {userInfo && userInfo.name}</div>
         <div
           className='cursor-pointer hover:text-yellow-400'

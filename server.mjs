@@ -4,7 +4,6 @@ import dotenv from 'dotenv'
 import colors from 'colors'
 import cors from 'cors'
 import connectDB from './server/config/db.mjs'
-import GraphQLRouter from './server/graphql/index.mjs'
 import * as middleware from './server/middleware/index.mjs'
 import * as path from 'path'
 
@@ -17,7 +16,6 @@ app.use(cors())
 app.use(express.json())
 
 app.use('/api', apiRouter)
-app.use('/graphql', GraphQLRouter)
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '/frontend/build')))
