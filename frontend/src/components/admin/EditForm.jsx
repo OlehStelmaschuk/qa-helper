@@ -99,13 +99,13 @@ const EditForm = () => {
       <div className='flex justify-end'>
         <div
           className='hello-button'
-          onClick={translateHandler(state.ru, 'ru', 'en')}
+          onClick={() => translateHandler(state.ru, 'ru', 'en')}
         >
           <span>Translate RU to EN</span>
         </div>
         <div
           className='hello-button'
-          onClick={translateHandler(state.ru, 'ru', 'ua')}
+          onClick={() => translateHandler(state.ru, 'ru', 'ua')}
         >
           <span className=''>Translate RU to UA</span>
         </div>
