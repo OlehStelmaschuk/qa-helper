@@ -1,5 +1,4 @@
 import * as TYPE from '../constants/dashboardConstants'
-import { whenMapStateToPropsIsMissing } from 'react-redux/lib/connect/mapStateToProps'
 
 export const dashboardReducer = (
   state = {
@@ -103,6 +102,7 @@ export const dashboardReducer = (
       return {
         ...state,
         post: null,
+        error: null,
       }
     }
     default:

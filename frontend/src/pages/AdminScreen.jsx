@@ -10,8 +10,10 @@ import { Link } from 'react-router-dom'
 const AdminScreen = ({ history }) => {
   const dispatch = useDispatch()
   const { userInfo } = useSelector((state) => state.user)
-  dispatch(clearPost())
-  dispatch(getAnswerList())
+  useEffect(() => {
+    dispatch(clearPost())
+    dispatch(getAnswerList())
+  })
 
   useEffect(() => {
     if (!userInfo || userInfo.role !== 'admin') {
@@ -32,6 +34,12 @@ const AdminScreen = ({ history }) => {
           onClick={() => history.goBack()}
         >
           Back
+        </div>
+        <div
+          className='cursor-pointer hover:text-yellow-400'
+          onClick={() => history.push('/dashboard')}
+        >
+          Dashboard
         </div>
         <div>User: {userInfo && userInfo.name}</div>
         <div

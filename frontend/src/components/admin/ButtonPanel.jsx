@@ -11,20 +11,20 @@ import {
 const ButtonPanel = ({ history }) => {
   const { id } = useParams()
   const dispatch = useDispatch()
-  const options = [
-    'main',
-    'hosting',
-    'domain',
-    'vps',
-    'cash',
-    'user',
-    'database',
-    'cms',
-    'mail',
-    'restriction',
-    'errors',
-    'redirect',
-  ]
+  // const options = [
+  //   'main',
+  //   'hosting',
+  //   'domain',
+  //   'vps',
+  //   'cash',
+  //   'user',
+  //   'database',
+  //   'cms',
+  //   'mail',
+  //   'restriction',
+  //   'errors',
+  //   'redirect',
+  // ]
   const { newPost } = useSelector((state) => state.dashboard)
 
   const saveHandler = async () => {
@@ -44,12 +44,12 @@ const ButtonPanel = ({ history }) => {
   return (
     <div className='flex w-full'>
       <div className='w-4/5 flex'>
-        <span className='my-auto px-2'>Category:</span>
-        <select className='select-css mr-2'>
-          {options.map((item, index) => (
-            <option key={index}>{item}</option>
-          ))}
-        </select>
+        {/*<span className='my-auto px-2'>Category:</span>*/}
+        {/*<select className='select-css mr-2'>*/}
+        {/*  {options.map((item, index) => (*/}
+        {/*    <option key={index}>{item}</option>*/}
+        {/*  ))}*/}
+        {/*</select>*/}
       </div>
       {id && (
         <div className='hello-button flex ml-0' onClick={deleteHandler}>

@@ -2,17 +2,31 @@ import { useDispatch, useSelector } from 'react-redux'
 import React, { useEffect, useState } from 'react'
 import { postChange } from '../../store/actions/dashboardAction'
 import { getTranslateService } from '../../services'
+import { useParams } from 'react-router-dom'
 
 const EditForm = () => {
+  const initState = {
+    category: '',
+    weight: '',
+    title: '',
+    ru: '',
+    en: '',
+    ua: '',
+  }
+
+  const { id } = useParams()
   const { post } = useSelector((state) => state.dashboard)
   const dispatch = useDispatch()
-  const [state, setState] = useState({})
+  const [state, setState] = useState(initState)
   useEffect(() => {
     post && setState(post)
   }, [post])
   useEffect(() => {
     dispatch(postChange(state))
   }, [state])
+  useEffect(() => {
+    !id && setState(initState)
+  }, [id])
   const changeHandler = async ({ target }) => {
     const { name, value } = target
     setState({ ...state, [name]: value })
@@ -85,13 +99,13 @@ const EditForm = () => {
       <div className='flex justify-end'>
         <div
           className='hello-button'
-          onClick={(e) => translateHandler(state.ru, 'ru', 'en')}
+          onClick={translateHandler(state.ru, 'ru', 'en')}
         >
           <span>Translate RU to EN</span>
         </div>
         <div
           className='hello-button'
-          onClick={(e) => translateHandler(state.ru, 'ru', 'ua')}
+          onClick={translateHandler(state.ru, 'ru', 'ua')}
         >
           <span className=''>Translate RU to UA</span>
         </div>

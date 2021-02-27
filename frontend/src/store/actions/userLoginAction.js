@@ -2,6 +2,7 @@ import * as TYPE from '../constants/userConst'
 import { loginRequestService } from '../../services'
 
 export const login = (user, password) => async (dispatch) => {
+  user = user.toLowerCase() //fix all user input to lowercase
   try {
     dispatch({
       type: TYPE.USER_LOGIN_REQUEST,
