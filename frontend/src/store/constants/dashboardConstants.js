@@ -15,6 +15,11 @@ export const POST_DATA_FAIL = 'POST_DATA_FAIL'
 
 export const POST_CHANGE = 'POST_CHANGE'
 
+export const POST_GET_DATA = 'POST_GET_DATA'
+
+export const POST_TRANSLATE_DATA = 'POST_TRANSLATE_DATA'
+export const POST_TRANSLATE_GET = 'POST_TRANSLATE_GET'
+
 export const POST_CLEAR = 'POST_CLEAR'
 export const POST_CREATE = 'POST_CREATE'
 export const POST_UPDATE = 'POST_UPDATE'

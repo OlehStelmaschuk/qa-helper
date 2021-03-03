@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import React, { useEffect, useState } from 'react'
-import { postChange } from '../../store/actions/dashboardAction'
-import { getTranslateService } from '../../services'
+import { postChange, translatePost } from '../../store/actions/dashboardAction'
 import { useParams } from 'react-router-dom'
 
 const EditForm = () => {
@@ -15,7 +14,7 @@ const EditForm = () => {
   }
 
   const { id } = useParams()
-  const { post } = useSelector((state) => state.dashboard)
+  const { post, loadingTranslate } = useSelector((state) => state.dashboard)
   const dispatch = useDispatch()
   const [state, setState] = useState(initState)
   useEffect(() => {
@@ -32,21 +31,50 @@ const EditForm = () => {
     setState({ ...state, [name]: value })
   }
   const translateHandler = async (text, inLang, outLang) => {
-    const data = await getTranslateService(text, inLang, outLang)
-    setState({ ...state, [outLang]: data })
+    const data = await dispatch(translatePost(text, inLang, outLang))
+    data && setState({ ...state, [outLang]: data })
   }
+
+  const options = [
+    'main',
+    'hosting',
+    'domain',
+    'vps',
+    'cash',
+    'user',
+    'database',
+    'cms',
+    'mail',
+    'restriction',
+    'errors',
+    'redirect',
+  ]
 
   return (
     <div className='edit-form'>
       <div className='item'>
         <span>Category:</span>
-        <input
-          required
+        {/*<input*/}
+        {/*  required*/}
+        {/*  name='category'*/}
+        {/*  key='category'*/}
+        {/*  value={state.category}*/}
+        {/*  onChange={changeHandler}*/}
+        {/*/>*/}
+        <select
+          className='select-css'
           name='category'
           key='category'
           value={state.category}
-          onChange={changeHandler}
-        />
+          onChange={(e) => changeHandler(e)}
+        >
+          <option value='' selected disabled hidden>
+            Choose category
+          </option>
+          {options.map((item, index) => (
+            <option key={index}>{item}</option>
+          ))}
+        </select>
       </div>
       <div className='item'>
         <span>Weight:</span>{' '}
@@ -96,20 +124,22 @@ const EditForm = () => {
           onChange={changeHandler}
         />
       </div>
-      <div className='flex justify-end'>
-        <div
-          className='hello-button'
-          onClick={() => translateHandler(state.ru, 'ru', 'en')}
-        >
-          <span>Translate RU to EN</span>
+      {!loadingTranslate && (
+        <div className='flex justify-end'>
+          <div
+            className='main-button'
+            onClick={() => translateHandler(state.ru, 'ru', 'en')}
+          >
+            <span>Translate RU to EN</span>
+          </div>
+          <div
+            className='main-button'
+            onClick={() => translateHandler(state.ru, 'ru', 'ua')}
+          >
+            <span className=''>Translate RU to UA</span>
+          </div>
         </div>
-        <div
-          className='hello-button'
-          onClick={() => translateHandler(state.ru, 'ru', 'ua')}
-        >
-          <span className=''>Translate RU to UA</span>
-        </div>
-      </div>
+      )}
     </div>
   )
 }

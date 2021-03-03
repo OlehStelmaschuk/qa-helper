@@ -41,6 +41,16 @@ const ButtonPanel = ({ history }) => {
     }
   }
 
+  const isSaveAvailable = () => {
+    return (
+      newPost &&
+      newPost.category &&
+      newPost.weight &&
+      newPost.title &&
+      newPost.ru
+    ) // yolo
+  }
+
   return (
     <div className='flex w-full'>
       <div className='w-4/5 flex'>
@@ -52,11 +62,16 @@ const ButtonPanel = ({ history }) => {
         {/*</select>*/}
       </div>
       {id && (
-        <div className='hello-button flex ml-0' onClick={deleteHandler}>
+        <div className='main-button flex ml-0' onClick={deleteHandler}>
           <Trash />
         </div>
       )}
-      <div className='hello-button w-1/5 flex ml-0' onClick={saveHandler}>
+      <div
+        className={`main-button w-1/5 flex ml-0 ${
+          !isSaveAvailable() && `invisible`
+        }`}
+        onClick={saveHandler}
+      >
         <Save />
         <span className='pl-2'>Save changes</span>
       </div>

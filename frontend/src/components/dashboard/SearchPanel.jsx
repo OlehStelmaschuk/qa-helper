@@ -87,7 +87,7 @@ const SearchPanel = () => {
       </div>
 
       <div
-        className={dashboard.addHello ? 'hello-button active' : 'hello-button'}
+        className={dashboard.addHello ? 'main-button active' : 'main-button'}
         title='Add hello message'
         onClick={changeHello}
       >
