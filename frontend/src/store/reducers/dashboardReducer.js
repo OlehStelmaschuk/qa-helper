@@ -7,6 +7,8 @@ export const dashboardReducer = (
     addHello: false,
     answerList: {},
     category: 'all',
+    loading: false,
+    loadingTranslate: false,
     filteredAnswerList: {},
   },
   { type, payload }
@@ -78,17 +80,20 @@ export const dashboardReducer = (
       return {
         ...state,
         post: payload,
+        loading: false,
       }
     }
     case TYPE.POST_DELETE: {
       return {
         ...state,
+        loading: false,
       }
     }
     case TYPE.POST_CHANGE: {
       return {
         ...state,
         newPost: payload,
+        loading: false,
       }
     }
     case TYPE.POST_DATA_FAIL: {
@@ -96,6 +101,7 @@ export const dashboardReducer = (
         ...state,
         post: null,
         error: payload,
+        loading: false,
       }
     }
     case TYPE.POST_CLEAR: {
@@ -103,6 +109,25 @@ export const dashboardReducer = (
         ...state,
         post: null,
         error: null,
+        loading: false,
+      }
+    }
+    case TYPE.POST_GET_DATA: {
+      return {
+        ...state,
+        loading: true,
+      }
+    }
+    case TYPE.POST_TRANSLATE_GET: {
+      return {
+        ...state,
+        loadingTranslate: true,
+      }
+    }
+    case TYPE.POST_TRANSLATE_DATA: {
+      return {
+        ...state,
+        loadingTranslate: false,
       }
     }
     default:

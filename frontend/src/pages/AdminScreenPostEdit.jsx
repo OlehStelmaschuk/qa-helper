@@ -7,11 +7,12 @@ import '../assets/adminpage.scss'
 import { useParams } from 'react-router-dom'
 import { getSinglePost } from '../store/actions/dashboardAction'
 import { ButtonPanel, EditForm } from '../components/admin'
+import { Loader } from '../components/dashboard'
 
 const AdminScreenPostEdit = ({ history }) => {
   const dispatch = useDispatch()
   const { userInfo } = useSelector((state) => state.user)
-  const { error } = useSelector((state) => state.dashboard)
+  const { error, loading } = useSelector((state) => state.dashboard)
   const { id } = useParams()
 
   useEffect(() => {
@@ -74,9 +75,7 @@ const AdminScreenPostEdit = ({ history }) => {
         <div className='search-block-main'>
           <ButtonPanel />
         </div>
-        <div className='main-block'>
-          <EditForm />
-        </div>
+        <div className='main-block'>{loading ? <Loader /> : <EditForm />}</div>
       </div>
     </Fragment>
   )
