@@ -4,7 +4,6 @@ import {
   deletePostService,
   getAnswerListService,
   getSingleAnswerService,
-  getTranslateService,
   updatePostService,
 } from '../../services'
 
@@ -106,11 +105,8 @@ export const getAnswerList = () => async (dispatch, getState) => {
 
 export const getSinglePost = (id) => async (dispatch, getState) => {
   try {
-    dispatch({
+    await dispatch({
       type: TYPE.POST_CLEAR,
-    })
-    dispatch({
-      type: TYPE.POST_GET_DATA,
     })
     const token = getState().user.userInfo.token
     const data = await getSingleAnswerService(token, id)
@@ -192,35 +188,4 @@ export const clearPost = () => async (dispatch) => {
   dispatch({
     type: TYPE.POST_CLEAR,
   })
-}
-
-export const translatePost = (text, inLang, outLang) => async (dispatch) => {
-  try {
-    dispatch({
-      type: TYPE.POST_TRANSLATE_GET,
-    })
-
-    const data = await getTranslateService(text, inLang, outLang)
-
-    dispatch({
-      type: TYPE.POST_TRANSLATE_DATA,
-    })
-
-    return data
-  } catch (err) {
-    dispatch({
-      type: TYPE.POST_DATA_FAIL,
-    })
-  }
-}
-
-export const postWeightUp = () => async (dispatch, getState) => {
-  try {
-    const token = getState().user.userInfo.token
-    await deletePostService(token, id)
-  } catch (err) {
-    dispatch({
-      type: TYPE.POST_DATA_FAIL,
-    })
-  }
 }
