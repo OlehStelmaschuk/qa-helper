@@ -12,6 +12,16 @@ const config = {
   },
 }
 
+const authConfig = (token) => {
+  if (token)
+    return {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    }
+}
+
 export const loginRequestService = async (name, password) => {
   const { data } = await axios.post(
     `${_baseURL}/users/login`,
@@ -32,61 +42,43 @@ export const getTranslateService = async (text, inLang, outLang) => {
 }
 
 export const getAnswerListService = async (token) => {
-  const authConfig = {
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    },
-  }
-  const { data } = await axios.get(`${_baseURL}/posts`, authConfig)
+  const { data } = await axios.get(`${_baseURL}/posts`, authConfig(token))
   return data
   // return jsonFile.posts
 }
 
 export const getSingleAnswerService = async (token, id) => {
-  const authConfig = {
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    },
-  }
-  const { data } = await axios.get(`${_baseURL}/posts/${id}`, authConfig)
+  const { data } = await axios.get(`${_baseURL}/posts/${id}`, authConfig(token))
   return data
 }
 
 export const createPostService = async (token, postData) => {
-  const authConfig = {
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    },
-  }
-  const { data } = await axios.post(`${_baseURL}/posts`, postData, authConfig)
+  const { data } = await axios.post(
+    `${_baseURL}/posts`,
+    postData,
+    authConfig(token)
+  )
   return data
 }
 
 export const updatePostService = async (token, postData, id) => {
-  const authConfig = {
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    },
-  }
   const { data } = await axios.put(
     `${_baseURL}/posts/${id}`,
     postData,
-    authConfig
+    authConfig(token)
   )
   return data
 }
 
 export const deletePostService = async (token, id) => {
-  const authConfig = {
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    },
-  }
-  const { data } = await axios.delete(`${_baseURL}/posts/${id}`, authConfig)
+  const { data } = await axios.delete(
+    `${_baseURL}/posts/${id}`,
+    authConfig(token)
+  )
+  return data
+}
+
+export const postChangeWeight = async (token, id) => {
+  const { data } = await axios.get(`${_baseURL}/posts/${id}`, authConfig(token))
   return data
 }

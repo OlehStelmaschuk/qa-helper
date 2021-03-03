@@ -15,7 +15,7 @@ const AnswerList = () => {
     <div className='answer-list-block'>
       {dashboard.answerListSuccess ? (
         list &&
-        list.map((item, index) => <AdminAnswerPost item={item} key={index} />)
+        list.map((item) => <AdminAnswerPost item={item} key={item._id} />)
       ) : (
         <Loader />
       )}
